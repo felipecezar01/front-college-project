@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+@font-face {
+    font-family: 'MinhaFonte'; 
+    src: url('Plante.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.pagina-inicial {
+    height: 100vh;
+    width: 100vw;
+    /* Adicionando gradiente sobre a imagem de fundo */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('mainimgapsgeral.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Cor geral do texto */
+}
+
+
+.nome-empresa {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 75px;
+    font-family: 'MinhaFonte', bold; /* Substitua pela fonte de sua preferência */
+    color: gold;
+}
+
+.navegacao {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+    list-style: none; /* Remove os marcadores de lista */
+}
+
+.navegacao li {
+    cursor: pointer;
+    font-family: 'Rubik Mono One', monospace;
+    transition: color 0.3s ease; /* Transição suave para mudança de cor */
+}
+
+.navegacao li:hover {
+    color: #ccc; /* Muda a cor do texto ao passar o mouse */
+}
+
+.navegacao-btn {
+    padding: 10px 20px; /* Ajusta o preenchimento dos botões */
+    font-size: 16px; /* Ajusta o tamanho da fonte dos botões */
+    background-color: #ffffff; /* Cor de fundo dos botões */
+    border: none;
+    border-radius: 5px; /* Borda arredondada para os botões */
+    cursor: pointer; /* Cursor indica que o elemento é clicável */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+.navegacao-btn:hover {
+    background-color: #dddddd; /* Muda a cor de fundo quando o mouse está sobre o botão */
+}

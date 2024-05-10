@@ -1,0 +1,59 @@
+/* ProfileMenu.css */
+.profile-menu {
+    position: absolute;  /* Mudar para 'absolute' para posicionar em relação à página ou seção */
+    top: 10px;           /* Ajustar para o topo da página */
+    right: 10px;         /* Ajustar para o lado direito da página */
+    cursor: pointer;
+    display: inline-block;
+    z-index: 1050;       /* Garantir que fique sobre outros componentes */
+}
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* Cor do texto, ajustar se necessário para combinar com o layout */
+}
+
+.profile-trigger img {
+    margin-right: 8px;
+    height: 32px;    /* Ajustar conforme necessário para a dimensão do ícone */
+}
+
+.menu-dropdown {
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sombra para melhorar a visualização */
+}
+
+.menu-dropdown ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.menu-dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.menu-dropdown li:hover {
+    background-color: #eeeeee;
+}
+
+.logout {
+    color: red;
+    display: flex; /* Flex para alinhar ícone e texto */
+    align-items: center;
+}
+
+.logout-icon {
+    margin-left: 5px; /* Espaço entre texto e ícone */
+}

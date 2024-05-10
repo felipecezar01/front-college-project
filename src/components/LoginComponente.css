@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+
+@font-face {
+    font-family: 'MinhaFonte'; 
+    src: url('Plante.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* LoginComponente.css */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+}
+
+.login-container {
+    display: flex;
+    width: 60%; 
+    height: 80%; 
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.login-image-container {
+    flex: 1; 
+    background: url('bannerlogin.jpg') center center no-repeat;
+    background-size: cover;
+}
+
+.login-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.login-title {
+    font-family: 'MinhaFonte';
+    font-size: 60px;
+    color: gold;
+    margin-top: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px; /* Espaçamento menor entre o nome da empresa e o título de login */
+}
+
+.login-subtitle {
+    font-size: 24px; /* Tamanho adequado para o subtítulo */
+    color: #333; /* Cor mais neutra para o subtítulo */
+    margin-bottom: 20px; /* Espaçamento antes do formulário */
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #0056b3;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #004494;
+}
+
+.message {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
