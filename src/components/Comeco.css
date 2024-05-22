@@ -1,66 +1,327 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap');
 
-@font-face {
-    font-family: 'MinhaFonte'; 
-    src: url('Plante.ttf') format('truetype'); 
-    font-weight: normal;
-    font-style: normal;
+/* Configuração geral */
+* {
+    box-sizing: border-box;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
 
 .pagina-inicial {
-    height: 100vh;
-    width: 100vw;
-    /* Adicionando gradiente sobre a imagem de fundo */
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('mainimgapsgeral.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cabecalho-intro {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('mainimgapsgeral.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 100%;
+    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white; /* Cor geral do texto */
-}
-
-
-.nome-empresa {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    font-size: 75px;
-    font-family: 'MinhaFonte', bold; /* Substitua pela fonte de sua preferência */
+    position: relative;
     color: gold;
 }
 
-.navegacao {
+.nome-empresa {
+    font-size: 75px;
+    font-family: 'Playfair Display', serif;
     position: absolute;
     top: 10px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+}
+
+/* Navegação */
+.navegacao {
+    position: absolute;
+    top: 20px;
     right: 20px;
     display: flex;
     gap: 20px;
-    list-style: none; /* Remove os marcadores de lista */
+    list-style: none;
+    z-index: 10;
 }
 
 .navegacao li {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    font-family: 'Rubik Mono One', monospace;
-    transition: color 0.3s ease; /* Transição suave para mudança de cor */
+    transition: background-color 0.3s;
 }
 
 .navegacao li:hover {
-    color: #ccc; /* Muda a cor do texto ao passar o mouse */
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.navegacao-btn {
-    padding: 10px 20px; /* Ajusta o preenchimento dos botões */
-    font-size: 16px; /* Ajusta o tamanho da fonte dos botões */
-    background-color: #ffffff; /* Cor de fundo dos botões */
+/* Seção de impacto */
+.impacto {
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.impacto h1 {
+    font-size: 48px;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
+.impacto p {
+    font-size: 24px;
+    margin: 10px 0 20px;
+}
+
+.impacto .cta {
+    padding: 10px 20px;
+    background-color: #d4af37;
+    color: white;
     border: none;
-    border-radius: 5px; /* Borda arredondada para os botões */
-    cursor: pointer; /* Cursor indica que o elemento é clicável */
-    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.navegacao-btn:hover {
-    background-color: #dddddd; /* Muda a cor de fundo quando o mouse está sobre o botão */
+.impacto .cta:hover {
+    background-color: #b8952e;
+}
+
+/* Configurações das seções */
+.recursos, .depoimentos, .localizacoes, .contato {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    height: auto;
+    overflow: hidden;
+}
+
+/* Títulos das seções */
+.recursos-titulo, .depoimentos h2, .localizacoes h2, .contato-titulo {
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-align: center;
+    width: 100%;
+    color: #333;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Texto das seções */
+.depoimentos p, .localizacoes p, .contato p {
+    margin-bottom: 20px;
+    font-weight: normal;
+    padding: 0 20px;
+    font-size: 18px;
+    color: #666;
+    max-width: 800px;
+}
+
+/* Recursos específicos */
+.recursos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.recursos-lista {
+    width: 40%;
+    margin-right: 2%;
+    list-style-position: outside;
+    align-self: center;
+    padding-left: 20px;
+}
+
+.recursos-lista li {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    list-style-position: inside;
+    text-align: left;
+    color: #333;
+}
+
+.recursos-imagem {
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+    margin-left: 2%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: center;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilos padrão para todos os botões */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b8952e;
+}
+
+/* Cards de depoimentos */
+.depoimentos-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    color: #333;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    min-height: 60px;
+}
+
+.stars {
+    margin-top: auto;
+}
+
+.stars span {
+    color: gold;
+    font-size: 16px;
+}
+
+/* Mapa */
+.map-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 450px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Seção de Contato */
+.contato-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+.contato-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 40px;
+}
+
+.contato-info {
+    text-align: left;
+}
+
+.contato-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    color: #333;
+}
+
+.contato-info p {
+    font-size: 18px;
+    color: #666;
+    margin: 10px 0;
+}
+
+.contato-info a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contato-info a:hover {
+    text-decoration: underline;
+}
+
+.contato-icone {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
 }

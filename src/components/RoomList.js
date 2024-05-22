@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './RoomList.css';
-import ProfileMenu from './ProfileMenu';
 import { ReactComponent as ArrowIcon } from './arrow.svg';
+import perfil from "./usuario-de-perfil.png";
 import { isUserAuthenticated } from '../utils/auth';
 
 function RoomList() {
@@ -23,6 +23,51 @@ function RoomList() {
     const [showLocalidades, setShowLocalidades] = useState(false);
     const [onlyAvailable, setOnlyAvailable] = useState(false);
     const navigate = useNavigate();
+    const menuRef = useRef();
+
+    // Função para obter o nome do usuário armazenado
+    const getUserName = () => {
+        const userName = localStorage.getItem('userName'); // Obtém o nome do usuário do localStorage
+        return userName;
+    };
+
+    // Estado para armazenar o nome do usuário
+    const [userName, setUserName] = useState(getUserName());
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Atualiza o nome do usuário no estado quando ele muda no localStorage
+    useEffect(() => {
+        const handleStorageChange = () => {
+            setUserName(getUserName());
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
+    // Fecha o menu quando clica fora dele
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
+    const handleLogout = () => {
+        console.log('Usuário deslogado');
+        localStorage.removeItem('token'); // Remove o token de autenticação
+        localStorage.removeItem('userName'); // Remove o nome do usuário do localStorage
+        navigate('/'); // Redireciona para a página inicial
+    };
 
     // Fetch both rooms and available count on component mount and whenever dependencies change
     useEffect(() => {
@@ -38,6 +83,7 @@ function RoomList() {
         const activeFilters = Object.keys(filters).filter(key => filters[key]);
         const queryParams = new URLSearchParams({
             page: currentPage,
+            limit: 8, // Limite de 8 salas por página
             search: searchTerm,
             localidades: activeFilters.join(','),
             available: onlyAvailable
@@ -121,17 +167,36 @@ function RoomList() {
 
     const handleDownloadDoc = () => {
         const link = document.createElement('a');
-        link.href = '/documentacaoapsgeral.pdf'; // Caminho acessível na raiz do servidor
+        link.href = '/documentacaoaps.pdf'; // Caminho acessível na raiz do servidor
         link.setAttribute('download', 'Documentacao_Projeto.pdf'); // Define o nome do arquivo para download
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      };      
-      
+    };      
 
     return (
         <div className="room-list-container">
-            <ProfileMenu />
+            <div className="profile-menu" ref={menuRef}>
+                <div onClick={() => setIsOpen(!isOpen)} className="profile-trigger">
+                    <img src={perfil} alt="Perfil" />
+                    {userName || "Perfil"}
+                </div>
+                {isOpen && (
+                    <div className="menu-dropdown">
+                        <ul>
+                            <li onClick={() => { navigate('/profile'); setIsOpen(false); }}>
+                                {userName || "Informações do Usuário"}
+                            </li>
+                            <li onClick={() => { navigate('/support'); setIsOpen(false); }}>
+                                Suporte
+                            </li>
+                            <li onClick={handleLogout} className="logout">
+                                Log out <span className="logout-icon">🚪</span>
+                            </li>
+                        </ul>
+                    </div>
+                )}
+            </div>
             <div className="side-panel">
                 <h3>Filtros</h3>
                 <div className="filter-category" onClick={toggleLocalidadesVisibility}>
@@ -173,7 +238,6 @@ function RoomList() {
                     </label>
                     <button onClick={handleGenerateReport} className="generate-report-button">Gerar Relatório</button>
                     <button className="download-doc-button" onClick={handleDownloadDoc}>Documentação</button>
-
                 </div>
                 <div className="room-grid">
                     {rooms.map(room => (

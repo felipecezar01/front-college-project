@@ -1,72 +1,192 @@
-/* Importação da fonte Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap');
 
-/* Estilos básicos */
+/* Configuração geral */
+* {
+    box-sizing: border-box;
+}
+
 body, input, button {
-    font-family: 'Poppins', sans-serif;
-    margin: 0; /* Remove a margem padrão */
-    padding: 0; /* Remove o padding padrão */
-    box-sizing: border-box; /* Inclui padding e border na largura e altura */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
 }
 
 .room-list-container {
     display: flex;
     justify-content: space-between;
-    max-width: 90%; /* Aumenta a largura máxima */
-    margin: 0 auto; /* Centraliza o container */
-    padding: 20px 10px; /* Ajusta o padding para maior proximidade das bordas */
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    background-color: #ffffff;
 }
 
 .room-list {
-    flex: 0 0 80%; /* Define uma largura fixa e impede o crescimento */
-    margin-left: 20px; /* Adiciona margem entre o painel de filtros e a lista de salas */
+    flex: 0 0 80%;
+    margin-left: 20px;
     text-align: center;
     position: relative;
 }
 
 .side-panel {
-    flex: 0 0 12%; /* Define uma largura fixa e impede o crescimento */
-    padding: 10px;
-    margin-right: 20px; /* Adiciona margem à direita para separar das salas */
+    flex: 0 0 12%;
+    padding: 20px;
+    margin-right: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: fit-content; /* Ajusta a altura conforme o conteúdo */
+    border-radius: 10px;
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.side-panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.filter-category {
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-options {
+    margin-top: 10px;
+}
+
+.filter-options label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.filter-options input {
+    margin-right: 10px;
+}
+
+.arrow {
+    width: 16px;
+    height: 16px;
+    fill: white;
+    transition: transform 0.3s ease;
+}
+
+.arrow.up {
+    transform: rotate(180deg);
 }
 
 .profile-menu {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    z-index: 1050;
+    margin-right: 130px;
+    margin-top: 30px;
+}
+
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    color: #333333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.profile-trigger img {
+    margin-right: 8px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.menu-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.menu-dropdown li:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.logout {
+    color: red;
+    display: flex;
+    align-items: center;
+}
+
+.logout-icon {
+    margin-left: 5px;
 }
 
 .room-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
 .room-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .room-item img {
     width: 100%;
-    max-height: 300px;
+    max-height: 200px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 h2, p {
     margin: 10px 0;
     color: #333;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
     color: #666;
 }
 
@@ -76,30 +196,28 @@ h2, p {
 }
 
 .available {
-    color: green;
+    color: #4CAF50;
 }
 
 .unavailable {
-    color: red;
+    color: #f44336;
 }
 
 .rent-button, .unrent-button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    background-color: #d4af37;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+    margin-top: auto;
 }
 
-.rent-button {
-    background-color: green;
-}
-
-.unrent-button {
-    background-color: red;
+.rent-button:hover, .unrent-button:hover {
+    background-color: #b8952e;
+    transform: scale(1.05);
 }
 
 .pagination {
@@ -111,22 +229,32 @@ h2, p {
 .pagination button {
     padding: 8px 16px;
     margin-right: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-.pagination button.active {
-    background-color: #0056b3;
+    background-color: #333;
     color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .pagination button:hover {
-    background-color: #004494;
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.pagination button.active {
+    background-color: #d4af37;
+    color: white;
+}
+
+.pagination button:disabled {
+    background-color: #777;
+    cursor: not-allowed;
 }
 
 .search-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     margin: 20px 0;
 }
@@ -134,83 +262,36 @@ h2, p {
 .search-input {
     padding: 10px;
     width: 300px;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px 0 0 5px;
     outline: none;
 }
 
-.filter-category {
-    cursor: pointer;
-    display: block;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.filter-category .arrow {
-    transition: transform 0.3s ease;
-    width: 16px; /* Ajuste o tamanho conforme necessário */
-    height: 16px; /* Ajuste o tamanho conforme necessário */
-}
-
-.filter-category .arrow.down {
-    transform: rotate(0deg);
-}
-
-.filter-category .arrow.up {
-    transform: rotate(180deg);
-}
-
-.filter-options {
-    display: block;
-}
-
-.filter-options label {
-    display: block;
-    margin-left: 20px;
-    margin-top: 5px;
-}
-
-/* Estilos adicionais para a área de filtro de disponibilidade */
 .availability-filter {
-    margin-left: 20px;
     display: flex;
     align-items: center;
-    font-size: 14px;
-    color: #666;
+    font-size: 16px;
+    color: #333;
+    margin-left: 20px;
 }
 
-.availability-filter input[type="checkbox"] {
+.availability-filter input {
     margin-right: 10px;
 }
 
-.generate-report-button {
-    padding: 8px 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
-}
-
-.generate-report-button:hover {
-    background-color: #0056b3;
-}
-
-.download-doc-button {
-    background-color: #4CAF50; /* Verde */
-    color: white;
+.generate-report-button, .download-doc-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    background-color: #d4af37;
+    color: white;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
     margin-left: 10px;
-  }
-  
-  .download-doc-button:hover {
-    background-color: #45a049; /* Verde um pouco mais escuro */
-  }
-  
+}
+
+.generate-report-button:hover, .download-doc-button:hover {
+    background-color: #b8952e;
+    transform: scale(1.05);
+}
