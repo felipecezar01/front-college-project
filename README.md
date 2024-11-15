@@ -16,7 +16,17 @@ Apesar disso, foi uma experiência extremamente **enriquecedora**, com muito apr
 
 ## Reflexão Pessoal
 
-Este projeto marcou um momento importante na minha jornada como desenvolvedor. Mesmo com todos os desafios e limitações, foi um passo fundamental para aprender sobre a integração entre frontend e backend e começar a trilhar o caminho no desenvolvimento fullstack.
+Olhem, está tão mal feito que nem a **Vercel** consegue renderizar direito. 😂 Mas, na época, **funcionava no meu PC** e era um website até grande, com vários filtros de busca. É aquilo: **arquitetura e design patterns passaram longe daqui!** 😅
+
+Apesar disso, foi um passo importante na minha jornada como desenvolvedor, marcando o início de muitos aprendizados.
+
+---
+
+## Pré-visualização
+
+<div align="center">
+  <img src="pre-coll.png" alt="Pré-visualização do Frontend do backend-college-project">
+</div>
 
 ---
 
